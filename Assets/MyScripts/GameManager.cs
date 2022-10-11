@@ -14,21 +14,41 @@ public class GameManager : MonoBehaviour
     private GameObject environment;
 
     [SerializeField]
-    private float environmentResetTimer = 5, initialTimer;
+    private float environmentResetTimer = 5, initialEnvironmentTimer;
+
+    [SerializeField]
+    private List<Transform> listOfSpawners;
+
+    [SerializeField]
+    private List<ObstacleScript> listOfObstacle;
+
+    [SerializeField]
+    private int maxSpeed;
+
+    [SerializeField]
+    private GameObject explosionPrefab;
+
+    public int moveSpeed;
+    private int score = 0;
+
+    [SerializeField]
+    private float spawningTimer, initialSpawnTimer;
 
     private void Start()
     {
-        initialTimer = environmentResetTimer;
+        initialEnvironmentTimer = environmentResetTimer;
+        initialSpawnTimer = spawningTimer;
         environmentInitialPos = environment.transform.position;
+        SpawnningSystem();
     }
 
     private void Update()
     {
         playerMovementScript.CarControls();
-        ResetTimerManager();
+        ResetEnvironementTimerManager();
     }
 
-    private void ResetTimerManager()
+    private void ResetEnvironementTimerManager()
     {
         if (environmentResetTimer > 0)
         {
@@ -36,8 +56,39 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            environmentResetTimer = initialTimer;
+            environmentResetTimer = initialEnvironmentTimer;
             environment.transform.position = environmentInitialPos;
         }
+    }
+
+    private void SpawnningSystem()
+    {
+        int randomObstaclePicker, randomSpawnerPicker;
+        randomObstaclePicker = Random.Range(0, listOfObstacle.Count);
+        randomSpawnerPicker = Random.Range(0, listOfSpawners.Count);
+        listOfObstacle[randomObstaclePicker].transform.position = listOfSpawners[randomSpawnerPicker].transform.position;
+        spawningTimer = initialSpawnTimer;
+    }
+
+    public void ObstacleResetBehaviour()
+    {
+        SpawnningSystem();
+        if (moveSpeed < maxSpeed)
+        {
+            moveSpeed++;
+        }
+        score += 10 * moveSpeed;
+        if (spawningTimer > 1)
+        {
+            spawningTimer--;
+        }
+    }
+
+    public void LoseBehaviour()
+    {
+        print("You lost! Your score is " + score);
+        moveSpeed = 0;
+        explosionPrefab.SetActive(true);
+        playerMovementScript.ableToMove = false;
     }
 }

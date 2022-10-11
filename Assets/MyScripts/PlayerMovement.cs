@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody playerBody;
-    public bool ableToMoveToTheRight = true, ableToMoveToTheLeft = true;
+    public bool ableToMoveToTheRight = true, ableToMoveToTheLeft = true, ableToMove;
+
+    [SerializeField]
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     private void Awake()
@@ -21,13 +24,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void CarControls()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow) && ableToMoveToTheRight)
+        if (Input.GetKeyDown(KeyCode.RightArrow) && ableToMoveToTheRight && ableToMove)
         {
-            playerBody.velocity += Vector3.right;
+            playerBody.velocity += Vector3.right * gameManager.moveSpeed;
+            ableToMove = false;
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && ableToMoveToTheLeft)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && ableToMoveToTheLeft && ableToMove)
         {
-            playerBody.velocity += Vector3.left;
+            playerBody.velocity += Vector3.left * gameManager.moveSpeed;
+            ableToMove = false;
         }
     }
 }

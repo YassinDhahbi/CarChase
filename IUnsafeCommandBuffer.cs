@@ -32,6 +32,115 @@ namespace UnityEngine.Rendering
     public interface IUnsafeCommandBuffer : IBaseCommandBuffer, IRasterCommandBuffer, IComputeCommandBuffer
     {
 
+        /// <summary>Wraps [RequestAsyncReadbackIntoNativeArray](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html) on a CommandBuffer.</summary>
+        /// <param name="output">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="src">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="callback">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <typeparam name="T">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</typeparam>
+        public void RequestAsyncReadbackIntoNativeArray<T>(ref NativeArray`1 output, ComputeBuffer src, Action<AsyncGPUReadbackRequest> callback) where T : struct;
+
+        /// <summary>Wraps [RequestAsyncReadbackIntoNativeArray](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html) on a CommandBuffer.</summary>
+        /// <param name="output">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="src">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="size">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="offset">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="callback">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <typeparam name="T">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</typeparam>
+        public void RequestAsyncReadbackIntoNativeArray<T>(ref NativeArray`1 output, ComputeBuffer src, int size, int offset, Action<AsyncGPUReadbackRequest> callback) where T : struct;
+
+        /// <summary>Wraps [RequestAsyncReadbackIntoNativeArray](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html) on a CommandBuffer.</summary>
+        /// <param name="output">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="src">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="callback">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <typeparam name="T">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</typeparam>
+        public void RequestAsyncReadbackIntoNativeArray<T>(ref NativeArray`1 output, GraphicsBuffer src, Action<AsyncGPUReadbackRequest> callback) where T : struct;
+
+        /// <summary>Wraps [RequestAsyncReadbackIntoNativeArray](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html) on a CommandBuffer.</summary>
+        /// <param name="output">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="src">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="size">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="offset">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="callback">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <typeparam name="T">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</typeparam>
+        public void RequestAsyncReadbackIntoNativeArray<T>(ref NativeArray`1 output, GraphicsBuffer src, int size, int offset, Action<AsyncGPUReadbackRequest> callback) where T : struct;
+
+        /// <summary>Wraps [RequestAsyncReadbackIntoNativeArray](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html) on a CommandBuffer.</summary>
+        /// <param name="output">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="src">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="callback">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <typeparam name="T">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</typeparam>
+        public void RequestAsyncReadbackIntoNativeArray<T>(ref NativeArray`1 output, Texture src, Action<AsyncGPUReadbackRequest> callback) where T : struct;
+
+        /// <summary>Wraps [RequestAsyncReadbackIntoNativeArray](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html) on a CommandBuffer.</summary>
+        /// <param name="output">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="src">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="mipIndex">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="callback">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <typeparam name="T">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</typeparam>
+        public void RequestAsyncReadbackIntoNativeArray<T>(ref NativeArray`1 output, Texture src, int mipIndex, Action<AsyncGPUReadbackRequest> callback) where T : struct;
+
+        /// <summary>Wraps [RequestAsyncReadbackIntoNativeArray](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html) on a CommandBuffer.</summary>
+        /// <param name="output">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="src">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="mipIndex">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="dstFormat">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="callback">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <typeparam name="T">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</typeparam>
+        public void RequestAsyncReadbackIntoNativeArray<T>(ref NativeArray`1 output, Texture src, int mipIndex, TextureFormat dstFormat, Action<AsyncGPUReadbackRequest> callback) where T : struct;
+
+        /// <summary>Wraps [RequestAsyncReadbackIntoNativeArray](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html) on a CommandBuffer.</summary>
+        /// <param name="output">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="src">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="mipIndex">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="dstFormat">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="callback">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <typeparam name="T">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</typeparam>
+        public void RequestAsyncReadbackIntoNativeArray<T>(ref NativeArray`1 output, Texture src, int mipIndex, GraphicsFormat dstFormat, Action<AsyncGPUReadbackRequest> callback) where T : struct;
+
+        /// <summary>Wraps [RequestAsyncReadbackIntoNativeArray](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html) on a CommandBuffer.</summary>
+        /// <param name="output">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="src">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="mipIndex">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="x">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="width">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="y">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="height">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="z">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="depth">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="callback">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <typeparam name="T">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</typeparam>
+        public void RequestAsyncReadbackIntoNativeArray<T>(ref NativeArray`1 output, Texture src, int mipIndex, int x, int width, int y, int height, int z, int depth, Action<AsyncGPUReadbackRequest> callback) where T : struct;
+
+        /// <summary>Wraps [RequestAsyncReadbackIntoNativeArray](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html) on a CommandBuffer.</summary>
+        /// <param name="output">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="src">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="mipIndex">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="x">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="width">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="y">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="height">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="z">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="depth">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="dstFormat">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="callback">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <typeparam name="T">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</typeparam>
+        public void RequestAsyncReadbackIntoNativeArray<T>(ref NativeArray`1 output, Texture src, int mipIndex, int x, int width, int y, int height, int z, int depth, TextureFormat dstFormat, Action<AsyncGPUReadbackRequest> callback) where T : struct;
+
+        /// <summary>Wraps [RequestAsyncReadbackIntoNativeArray](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html) on a CommandBuffer.</summary>
+        /// <param name="output">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="src">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="mipIndex">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="x">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="width">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="y">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="height">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="z">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="depth">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="dstFormat">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <param name="callback">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</param>
+        /// <typeparam name="T">[See CommandBuffer documentation](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.RequestAsyncReadbackIntoNativeArray.html)</typeparam>
+        public void RequestAsyncReadbackIntoNativeArray<T>(ref NativeArray`1 output, Texture src, int mipIndex, int x, int width, int y, int height, int z, int depth, GraphicsFormat dstFormat, Action<AsyncGPUReadbackRequest> callback) where T : struct;
+
         /// <summary>Wraps [Clear](https://docs.unity3d.com/ScriptReference/Rendering.CommandBuffer.Clear.html) on a CommandBuffer.</summary>
 
         public void Clear() ;

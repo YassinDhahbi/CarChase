@@ -24,8 +24,8 @@ MonoBehaviour:
   m_SpringDamper: 75
   m_AcceleratePower: 300
   m_BrakesPower: 1.5
-  m_MaxSpeed: 22
-  m_MaxReverseSpeed: 12
+  m_MaxSpeed: 17
+  m_MaxReverseSpeed: 7
   m_SteerAngle: 20
   m_FrontWheelsGripFactor: 0.8
   m_RearWheelsGripFactor: 0.9

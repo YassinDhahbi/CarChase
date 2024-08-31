@@ -21,22 +21,13 @@ public class PathCombination
         _distance = Mathf.RoundToInt(Vector3.Distance(startPoint.position, endPoint.position));
     }
 
-    public void ManageNextTarget(Transform _reachedPoint)
+    public void ActivatePath()
     {
-        Transform next = null;
-        if (_reachedPoint == _startPoint)
-        {
-            _reachedPoint.gameObject.SetActive(false);
-            EndPoint.gameObject.SetActive(true);
-            next = _endPoint;
-        }
-        if (_reachedPoint == _endPoint)
-        {
-            _reachedPoint.gameObject.SetActive(false);
-            Debug.Log("End reached");
-        }
-        DeliverySystem.instance.SetDestination(next);
-
+        _startPoint.gameObject.SetActive(true);
+        _endPoint.gameObject.SetActive(false);
+        DeliverySystem.Instance.SetDestination(_startPoint);
     }
+
+
 
 }

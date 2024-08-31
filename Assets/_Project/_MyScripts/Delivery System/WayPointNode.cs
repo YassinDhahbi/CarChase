@@ -1,23 +1,20 @@
+using ArcadeVehicleController;
 using UnityEngine;
 
 public class WayPointNode : MonoBehaviour
 {
-    [SerializeField] private WayPointNodeType _nodeType;
-    private void Start()
+    private void Awake()
     {
-        DeliverySystem.instance.AddNode(transform, _nodeType);
         gameObject.SetActive(false);
     }
-    private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player")
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out Vehicle vehicle))
         {
-           DeliverySystem.instance.PathCombination.ManageNextTarget(transform);
+            DeliverySystem.Instance.ManageDestinations(transform);
+            gameObject.SetActive(false);
         }
     }
 }
 
-public enum WayPointNodeType
-{
-    Start,
-    End
-}
+

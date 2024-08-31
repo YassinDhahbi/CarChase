@@ -1,105 +1,77 @@
 ﻿using System.Collections.Generic;
+using ArcadeVehicleController;
 using UnityEngine;
 
 public class DeliverySystem : MonoBehaviour
 {
-    public static DeliverySystem instance;
+    public static DeliverySystem Instance;
     [Header("Path Configuration")]
-    [SerializeField] private int _numberOfPaths;
-    [SerializeField] private bool _isDestinationReached;
     [SerializeField] private PathCombination _currentPathCombination;
-    [Header("Player Details ")]
-    [SerializeField] private Transform _playerTransform;
+    [SerializeField]
+    private List<PathCombination> _listOfPathCombinations = new List<PathCombination>();
+    [SerializeField]
+    private Transform _startPointsContainer;
+    [SerializeField]
+    private Transform _endPointsContainer;
+    public PathCombination PathCombination => _currentPathCombination;
     [Header("Destination Arrow Configuration")]
     [SerializeField] private Transform _destinationArrow;
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private Transform _destination;
     [Header("NPC Settings")]
     [SerializeField] private List<SpawnlableNPC> _listOfSpawnlableNPCs = new List<SpawnlableNPC>();
-    private List<PathCombination> _listOfPathCombinations = new List<PathCombination>();
-    public PathCombination PathCombination => _currentPathCombination;
+    // [SerializeField] private ;
 
-    private List<Transform> _listOfStartPoints = new List<Transform>();
-    private List<Transform> _listOfEndPoints = new List<Transform>();
+
+
+    Transform GetStartPointByIndex(int index) => index < _startPointsContainer.childCount ? _startPointsContainer.GetChild(index) : null;
+    Transform GetEndPointByIndex(int index) => index < _endPointsContainer.childCount ? _endPointsContainer.GetChild(index) : null;
+
 
     private void Awake()
     {
-        instance = this;
-        Invoke("GeneratePathsList", 1f);
-        // InvokeRepeating("CalulateDistance", 1.5f, 1f);
+        Instance = this;
+        SetArrowState(false);
     }
-    void CalulateDistance()
+    void Start()
     {
-        var startPoint = _currentPathCombination.StartPoint;
-        var endPoint = _currentPathCombination.EndPoint;
-
-        if (_playerTransform != null)
-        {
-            var distance = 0f;
-            var isCloseToStart = Vector3.Distance(_playerTransform.position, startPoint.position) < 1f;
-            if (isCloseToStart)
-            {
-                _isDestinationReached = true;
-            }
-            if (!isCloseToStart)
-            {
-                distance = Vector3.Distance(_playerTransform.position, startPoint.position);
-
-            }
-            if (_isDestinationReached)
-            {
-                distance = Vector3.Distance(_playerTransform.position, endPoint.position);
-
-            }
-
-        }
+        GeneratePathsList();
     }
+
     private void Update()
     {
         if (_destination != null)
             HandleArrowDirection();
     }
-    public void AddNode(Transform nodeTransform, WayPointNodeType nodeType)
-    {
-        if (nodeType == WayPointNodeType.Start)
-        {
 
-            _listOfStartPoints.Add(nodeTransform);
-        }
-        else
-        {
-
-            _listOfEndPoints.Add(nodeTransform);
-        }
-    }
 
     void GeneratePathsList()
     {
-
-        for (int i = 0; i < _numberOfPaths; i++)
+        for (int i = 0; i < _startPointsContainer.childCount; i++)
         {
-            var randomStart = _listOfStartPoints[Random.Range(0, _listOfStartPoints.Count)];
-            var randomEnd = _listOfEndPoints[Random.Range(0, _listOfEndPoints.Count)];
+            var randomStart = GetStartPointByIndex(i);
+            var randomEnd = GetEndPointByIndex(i);
             var newPath = new PathCombination(randomStart, randomEnd);
             _listOfPathCombinations.Add(newPath);
         }
         GenerateNPCs();
-
     }
 
     void GenerateNPCs()
     {
-
-        foreach (var path in _listOfPathCombinations)
+        for (int i = 0; i < _listOfSpawnlableNPCs.Count; i++)
         {
-            var randomIndex = Random.Range(0, _listOfSpawnlableNPCs.Count);
-            var randomNPCData = _listOfSpawnlableNPCs[randomIndex];
-            var newNPC = Instantiate(randomNPCData.NPCPrefab, path.StartPoint.position, Quaternion.identity);
+            var npcData = _listOfSpawnlableNPCs[i];
+            var path = _listOfPathCombinations[i];
+            var newNPC = Instantiate(npcData.NPCPrefab, path.StartPoint.position, Quaternion.identity);
             newNPC.transform.parent = path.StartPoint;
-            var randomSprite = randomNPCData.NPCPortrait;
-            PhoneSystem.instance.SpawnClientRequestUI(randomSprite, path.Distance, path.Cost, randomIndex);
+            var randomSprite = npcData.NPCPortrait;
+            PhoneSystem.Instance.SpawnClientRequestUI(randomSprite, path.Distance, path.Cost, i);
         }
     }
+
+
+
     private void HandleArrowDirection()
     {
         _destinationArrow.forward = (_destination.position - _destinationArrow.position).normalized;
@@ -112,7 +84,43 @@ public class DeliverySystem : MonoBehaviour
 
     public void SetCurrentPathCombinationByIndex(int index)
     {
+
+        for (int i = 0; i < _listOfPathCombinations.Count; i++)
+        {
+            var path = _listOfPathCombinations[i];
+            path.StartPoint.gameObject.SetActive(false);
+            path.EndPoint.gameObject.SetActive(false);
+        }
         _currentPathCombination = _listOfPathCombinations[index];
+        _currentPathCombination.ActivatePath();
+        _destination = _currentPathCombination.StartPoint;
+        Sprite characterPortrait = _listOfSpawnlableNPCs[index].NPCPortrait;
+        DestinationPanelManager.Instance.SetClientPortrait(characterPortrait);
+
     }
+
+    public void ManageDestinations(Transform reachedPoint)
+    {
+        if (PathCombination.StartPoint == reachedPoint)
+        {
+            _destination = PathCombination.EndPoint;
+            PathCombination.EndPoint.gameObject.SetActive(true);
+            DestinationPanelManager.Instance.ActivateDestinationPortrait();
+        }
+        else
+        {
+            var indexOfCurrentPathCombination = _listOfPathCombinations.IndexOf(PathCombination);
+            PhoneSystem.Instance.RemoveClientRequestUI(indexOfCurrentPathCombination);
+            _destination = null;
+            _currentPathCombination = null;
+            PhoneSystem.Instance.ActivatePhone();
+            DestinationPanelManager.Instance.ToggleDestinationPanel();
+
+        }
+
+    }
+    public void SetArrowState(bool state) => _destinationArrow.gameObject.SetActive(state);
+
+    public Transform Destination => _destination;
 
 }

@@ -62,5 +62,21 @@ namespace ArcadeVehicleController
         public float RearWheelsGripFactor => m_RearWheelsGripFactor;
         
         public float AirResistance => m_AirResistance;
+
+        public void SetAcceleratePower(float acceleration)
+        {
+            m_AcceleratePower += acceleration;
+        }
+
+        public void SetMaxSpeed(float maxspeed)
+        {
+            m_MaxSpeed += maxspeed;
+        }
+
+
+        public void SetSteerHandeling(float steerHandeling)
+        {
+            m_SteerAngle += steerHandeling;
+        }
     }
 }

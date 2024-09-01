@@ -20,7 +20,9 @@ public class DeliverySystem : MonoBehaviour
     [SerializeField] private Transform _destination;
     [Header("NPC Settings")]
     [SerializeField] private List<SpawnlableNPC> _listOfSpawnlableNPCs = new List<SpawnlableNPC>();
-    // [SerializeField] private ;
+    [Header("Delivery Parameters")]
+    [SerializeField] private AudioClip _cashSound;
+    [SerializeField] private AudioClip _clientPickUpSound;
 
 
 
@@ -106,6 +108,8 @@ public class DeliverySystem : MonoBehaviour
             _destination = PathCombination.EndPoint;
             PathCombination.EndPoint.gameObject.SetActive(true);
             DestinationPanelManager.Instance.ActivateDestinationPortrait();
+            AudioManager.Instance.PlaySound(_clientPickUpSound);
+
         }
         else
         {
@@ -115,6 +119,7 @@ public class DeliverySystem : MonoBehaviour
             _currentPathCombination = null;
             PhoneSystem.Instance.ActivatePhone();
             DestinationPanelManager.Instance.ToggleDestinationPanel();
+            AudioManager.Instance.PlaySound(_cashSound);
 
         }
 

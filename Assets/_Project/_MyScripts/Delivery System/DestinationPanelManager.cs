@@ -23,7 +23,7 @@ public class DestinationPanelManager : MonoBehaviour
     [SerializeField] private float _endXPosition;
     private string _baseDestinationLabel;
     public static DestinationPanelManager Instance { get; private set; }
-    private float _lastDistance = 1;
+    private float _maxDistance = 1;
     private void Awake()
     {
         _baseDestinationLabel = _destinationLabelTMP.text;
@@ -48,6 +48,7 @@ public class DestinationPanelManager : MonoBehaviour
         _clientPortraitContainer.SetActive(true);
         _destinationPortraitContainer.SetActive(false);
         _destinationLabelTMP.text = _baseDestinationLabel + " " + _clientLabel + ":";
+        SetMaxDistance();
 
     }
 
@@ -56,6 +57,7 @@ public class DestinationPanelManager : MonoBehaviour
         _destinationPortraitContainer.SetActive(true);
         _clientPortraitContainer.SetActive(false);
         _destinationLabelTMP.text = _baseDestinationLabel + " " + _destinationLabel + ":";
+        SetMaxDistance();
     }
 
     void CalculateDistance()
@@ -64,13 +66,20 @@ public class DestinationPanelManager : MonoBehaviour
         if (destination == null) return;
         var playerPosition = PlayerController.Instance.Vehicle.transform.position;
         var distance = Vector3.Distance(playerPosition, destination.position);
-        _distanceSlider.value = _lastDistance / distance;
-        Debug.Log(_distanceSlider.value);
-        _lastDistance = distance;
+        _distanceSlider.value = 1 - (distance / _maxDistance);
         _distanceValueTMP.text = distance.ToString("F1") + " M";
     }
     private void Update()
     {
         CalculateDistance();
+    }
+    public void SetMaxDistance()
+    {
+        var destination = DeliverySystem.Instance.Destination;
+        if (destination == null) return;
+        var playerPosition = PlayerController.Instance.Vehicle.transform.position;
+        var distance = Vector3.Distance(playerPosition, destination.position);
+        _maxDistance = distance;
+        Debug.Log(_maxDistance);
     }
 }

@@ -23,7 +23,7 @@ public class PhoneSystem : MonoBehaviour
     [Header("Stop Sign Parameters")]
     [SerializeField] private Transform _stopSign;
     [SerializeField] private float _stopSignAnimationDuration;
-    [SerializeField] private EventTrigger _customerInTaxiTrigger;
+
 
 
     private void Awake()
@@ -98,13 +98,12 @@ public class PhoneSystem : MonoBehaviour
     public void ActivatePhone()
     {
         _phoneToggleButton.interactable = true;
-        _customerInTaxiTrigger.enabled = false;
+
         DeliverySystem.Instance.SetArrowState(false);
     }
     public void DeactivatePhone()
     {
         _phoneToggleButton.interactable = false;
-        _customerInTaxiTrigger.enabled = true;
         DeliverySystem.Instance.SetArrowState(true);
 
     }

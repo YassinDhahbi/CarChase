@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 8c550b3485647bb4ebcf137fd7cabb59
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - hoverSFXClip: {fileID: 8300000, guid: cef8791427424f14fba288777036f302, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

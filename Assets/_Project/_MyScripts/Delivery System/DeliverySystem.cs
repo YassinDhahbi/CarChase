@@ -115,12 +115,12 @@ public class DeliverySystem : MonoBehaviour
         {
             var indexOfCurrentPathCombination = _listOfPathCombinations.IndexOf(PathCombination);
             PhoneSystem.Instance.RemoveClientRequestUI(indexOfCurrentPathCombination);
+            MoneyManager.Instance.AddMoney(_currentPathCombination.Cost);
             _destination = null;
             _currentPathCombination = null;
             PhoneSystem.Instance.ActivatePhone();
             DestinationPanelManager.Instance.ToggleDestinationPanel();
             AudioManager.Instance.PlaySound(_cashSound);
-
         }
 
     }

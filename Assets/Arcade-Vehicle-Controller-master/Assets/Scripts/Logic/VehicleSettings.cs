@@ -37,6 +37,9 @@ namespace ArcadeVehicleController
         [Header("Other")]
         [SerializeField] private float m_AirResistance;
 
+        [Header("Fuel")]
+        [SerializeField] private float m_Fuel;
+
 
         public float Width => m_Width;
         public float Height => m_Height;
@@ -63,6 +66,8 @@ namespace ArcadeVehicleController
         
         public float AirResistance => m_AirResistance;
 
+        public float Fuel => m_Fuel;
+
         public void SetAcceleratePower(float acceleration)
         {
             m_AcceleratePower += acceleration;
@@ -77,6 +82,11 @@ namespace ArcadeVehicleController
         public void SetSteerHandeling(float steerHandeling)
         {
             m_SteerAngle += steerHandeling;
+        }
+
+        public void SetFuel(float fuel)
+        {
+            m_Fuel += fuel;
         }
     }
 }

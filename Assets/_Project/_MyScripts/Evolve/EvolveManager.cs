@@ -59,7 +59,6 @@ public class EvolveManager : MonoBehaviour
         }
     }
 
-    [ContextMenu("Evolve")]
     public void SteerHandeler()
     {
         float startFillAmount = _vehicleSettings.SteerAngle / 60;

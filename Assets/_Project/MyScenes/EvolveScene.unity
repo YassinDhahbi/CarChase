@@ -254,7 +254,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2c2704f836b435e44816abbd184edb4a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a37548aa73345141942295d3a1d422a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -967,7 +967,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b6d0e6bcb80234346a73106b09750358, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6343750518d29214d8ae4353b5f9f58c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1209,8 +1209,10 @@ GameObject:
   - component: {fileID: 1261423569}
   - component: {fileID: 1261423568}
   - component: {fileID: 1261423567}
+  - component: {fileID: 1261423572}
+  - component: {fileID: 1261423571}
   m_Layer: 5
-  m_Name: Acceleration (1)
+  m_Name: SteerHandeler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1346,6 +1348,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261423565}
   m_CullTransparentMesh: 1
+--- !u!114 &1261423571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261423565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c550b3485647bb4ebcf137fd7cabb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSFXClip: {fileID: 8300000, guid: cef8791427424f14fba288777036f302, type: 3}
+--- !u!114 &1261423572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261423565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f388405cadddd34a8202bb09d339bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSFX: {fileID: 8300000, guid: d36f0028f2dc1a14d88eaa8b8fd40e55, type: 3}
 --- !u!1 &1340488123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,7 +1584,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85bf549e66ecfec4b9bac5f905e457a2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d2eec25393e89bd418ac861389d589be, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1662,7 +1690,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 37e1f6f7998058a41ae1909abcdd7d2c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e591d4490a5841e4ebd671490b027b47, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1708,8 +1736,10 @@ GameObject:
   - component: {fileID: 1652282223}
   - component: {fileID: 1652282222}
   - component: {fileID: 1652282221}
+  - component: {fileID: 1652282226}
+  - component: {fileID: 1652282225}
   m_Layer: 5
-  m_Name: Acceleration (3)
+  m_Name: AcceleratePower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1845,6 +1875,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652282219}
   m_CullTransparentMesh: 1
+--- !u!114 &1652282225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652282219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c550b3485647bb4ebcf137fd7cabb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSFXClip: {fileID: 8300000, guid: cef8791427424f14fba288777036f302, type: 3}
+--- !u!114 &1652282226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652282219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f388405cadddd34a8202bb09d339bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSFX: {fileID: 8300000, guid: d36f0028f2dc1a14d88eaa8b8fd40e55, type: 3}
 --- !u!1 &1690178350
 GameObject:
   m_ObjectHideFlags: 0
@@ -1858,6 +1914,8 @@ GameObject:
   - component: {fileID: 1690178354}
   - component: {fileID: 1690178353}
   - component: {fileID: 1690178352}
+  - component: {fileID: 1690178357}
+  - component: {fileID: 1690178356}
   m_Layer: 5
   m_Name: Acceleration
   m_TagString: Untagged
@@ -1995,6 +2053,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690178350}
   m_CullTransparentMesh: 1
+--- !u!114 &1690178356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690178350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c550b3485647bb4ebcf137fd7cabb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSFXClip: {fileID: 8300000, guid: cef8791427424f14fba288777036f302, type: 3}
+--- !u!114 &1690178357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690178350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f388405cadddd34a8202bb09d339bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSFX: {fileID: 8300000, guid: d36f0028f2dc1a14d88eaa8b8fd40e55, type: 3}
 --- !u!1001 &1711846769
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2321,8 +2405,10 @@ GameObject:
   - component: {fileID: 1832222400}
   - component: {fileID: 1832222399}
   - component: {fileID: 1832222398}
+  - component: {fileID: 1832222403}
+  - component: {fileID: 1832222402}
   m_Layer: 5
-  m_Name: Acceleration (2)
+  m_Name: Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2458,6 +2544,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832222396}
   m_CullTransparentMesh: 1
+--- !u!114 &1832222402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832222396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c550b3485647bb4ebcf137fd7cabb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSFXClip: {fileID: 8300000, guid: cef8791427424f14fba288777036f302, type: 3}
+--- !u!114 &1832222403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832222396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f388405cadddd34a8202bb09d339bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSFX: {fileID: 8300000, guid: d36f0028f2dc1a14d88eaa8b8fd40e55, type: 3}
 --- !u!1 &1936928945
 GameObject:
   m_ObjectHideFlags: 3

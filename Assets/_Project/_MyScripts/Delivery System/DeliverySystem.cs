@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using ArcadeVehicleController;
 using UnityEngine;
 
@@ -23,11 +25,12 @@ public class DeliverySystem : MonoBehaviour
     [Header("Delivery Parameters")]
     [SerializeField] private AudioClip _cashSound;
     [SerializeField] private AudioClip _clientPickUpSound;
+    List<Transform> _listOfShuffledStartPoints = new List<Transform>();
+    List<Transform> _listOfShuffledEndPoints = new List<Transform>();
 
 
-
-    Transform GetStartPointByIndex(int index) => index < _startPointsContainer.childCount ? _startPointsContainer.GetChild(index) : null;
-    Transform GetEndPointByIndex(int index) => index < _endPointsContainer.childCount ? _endPointsContainer.GetChild(index) : null;
+    Transform GetStartPointByIndex(int index) => index < _startPointsContainer.childCount ? _listOfShuffledStartPoints[index] : null;
+    Transform GetEndPointByIndex(int index) => index < _endPointsContainer.childCount ? _listOfShuffledEndPoints[index] : null;
 
 
     private void Awake()
@@ -49,7 +52,13 @@ public class DeliverySystem : MonoBehaviour
 
     void GeneratePathsList()
     {
-        for (int i = 0; i < _startPointsContainer.childCount; i++)
+        FillList(_listOfShuffledStartPoints, _startPointsContainer);
+        FillList(_listOfShuffledEndPoints, _endPointsContainer);
+        _listOfShuffledStartPoints.Shuffle();
+        _listOfShuffledEndPoints.Shuffle();
+
+
+        for (int i = 0; i < _listOfShuffledStartPoints.Count; i++)
         {
             var randomStart = GetStartPointByIndex(i);
             var randomEnd = GetEndPointByIndex(i);
@@ -59,6 +68,14 @@ public class DeliverySystem : MonoBehaviour
         GenerateNPCs();
     }
 
+
+    void FillList(List<Transform> _list, Transform source)
+    {
+        foreach (Transform child in source)
+        {
+            _list.Add(child);
+        }
+    }
     void GenerateNPCs()
     {
         for (int i = 0; i < _listOfSpawnlableNPCs.Count; i++)
@@ -128,4 +145,24 @@ public class DeliverySystem : MonoBehaviour
 
     public Transform Destination => _destination;
 
+}
+
+
+public static class IListExtensions
+{
+    /// <summary>
+    /// Shuffles the element order of the specified list.
+    /// </summary>
+    public static void Shuffle<T>(this IList<T> ts)
+    {
+        var count = ts.Count;
+        var last = count - 1;
+        for (var i = 0; i < last; ++i)
+        {
+            var r = UnityEngine.Random.Range(i, count);
+            var tmp = ts[i];
+            ts[i] = ts[r];
+            ts[r] = tmp;
+        }
+    }
 }

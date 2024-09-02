@@ -17,10 +17,8 @@ public class CarEngineAdapter : MonoBehaviour
 
     float MaxPitch => _listOfMaxPitchBasedOnUpgrades[_pitchIndex];
 
-    private void Awake()
-    {
-        _audioSource = GetComponent<AudioSource>();
-    }
+
+
 
     void ManagePitch()
     {

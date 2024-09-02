@@ -69,5 +69,10 @@ public class AudioManager : Singelton<AudioManager>
         _musicPlayer.volume = volume;
     }
 
+    public AudioSource GetSFXPlayer()
+    {
+        return _sfxPlayer;
+    }
+
 
 }

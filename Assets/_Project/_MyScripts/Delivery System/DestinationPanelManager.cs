@@ -80,6 +80,6 @@ public class DestinationPanelManager : MonoBehaviour
         var playerPosition = PlayerController.Instance.Vehicle.transform.position;
         var distance = Vector3.Distance(playerPosition, destination.position);
         _maxDistance = distance;
-        Debug.Log(_maxDistance);
+
     }
 }

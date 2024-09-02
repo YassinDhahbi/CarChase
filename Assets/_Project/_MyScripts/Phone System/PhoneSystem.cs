@@ -48,7 +48,6 @@ public class PhoneSystem : MonoBehaviour
         var targetY = -_phone.position.y;
         _phone.transform.DOMoveY(targetY, _animationDuration).SetEase(Ease.InOutBack).OnComplete(() => UpdatePhoneStaus());
         _stopSign.gameObject.SetActive(isPlayerAbleToMove);
-        StopSignAnimation();
 
 
     }
@@ -86,13 +85,7 @@ public class PhoneSystem : MonoBehaviour
         }
     }
 
-    void StopSignAnimation()
-    {
-        if (_stopSign.gameObject.activeInHierarchy)
-        {
-            _stopSign.DOScale(1.5f, _stopSignAnimationDuration).SetEase(Ease.InOutBack);
-        }
-    }
+
 
 
     public void ActivatePhone()

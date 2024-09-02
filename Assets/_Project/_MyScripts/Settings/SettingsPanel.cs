@@ -12,6 +12,8 @@ public class SettingsPanel : MonoBehaviour
     [SerializeField] private Slider _sfxSlider;
     [SerializeField] private Slider _musicSlider;
 
+    [SerializeField] private SceneLoader _sceneLoader;
+
     private void OnEnable()
     {
         _seetingsBtn.onClick.AddListener(OpenSettings);
@@ -52,4 +54,8 @@ public class SettingsPanel : MonoBehaviour
             _pauseMenu.SetActive(!currentState);
         }
     }
+
+    public void Quit() => Application.Quit();
+
+    public void LoadMainMneu() => _sceneLoader.LoadScene("MainGame");
 }

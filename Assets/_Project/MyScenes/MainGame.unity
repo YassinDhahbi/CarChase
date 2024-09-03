@@ -6081,6 +6081,22 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &655448524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655448517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9abe96489d2ac4f418cd211fe3b9860e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayLength: 10
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &695041237
 GameObject:
   m_ObjectHideFlags: 0
@@ -13942,6 +13958,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 703713963926118315, guid: 66ac9a16de70c004e82d6e9d704658c4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 655448523}
+    - targetCorrespondingSourceObject: {fileID: 703713963926118315, guid: 66ac9a16de70c004e82d6e9d704658c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 655448524}
   m_SourcePrefab: {fileID: 100100000, guid: 66ac9a16de70c004e82d6e9d704658c4, type: 3}
 --- !u!1001 &1562044957
 PrefabInstance:

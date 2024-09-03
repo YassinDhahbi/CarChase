@@ -13,9 +13,9 @@ public class EvolveManager : MonoBehaviour
     const string MAX_SPEED = "MaxSpeed";
     const string ACCELERTE_POWER = "AcceleratePower";
     const string STEER_HANDELER = "SteerHandeler";
-    const string FUEL = "fuel";
+    const string FUEL = "Fuel";
 
-    private string currentItem= "SteerHandeler";
+    private string currentItem = "SteerHandeler";
 
     [Header("Vehicle Settings")]
     [SerializeField] private float _fuelMaxEvolve = 1000f;

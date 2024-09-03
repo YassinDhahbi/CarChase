@@ -14,12 +14,12 @@ public class SceneLoader : MonoBehaviour
     }
     public void LoadScene(string sceneName)
     {
-        _animator.Play("SceneLoader_Anim");
         StartCoroutine(LoadSceneAnimation(sceneName));
     }
 
     IEnumerator LoadSceneAnimation(string sceneName)
     {
+        _animator.Play("SceneLoader_Anim");
         AudioManager.Instance.PlaySound(_carEngineStartSfx);
         float skillComboCounting = _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
         yield return new WaitForSeconds(skillComboCounting);

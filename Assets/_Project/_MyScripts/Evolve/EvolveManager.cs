@@ -22,31 +22,35 @@ public class EvolveManager : MonoBehaviour
     [SerializeField] private float _maxsSpeedEvolve = 40f;
     [SerializeField] private float _maxAcceleratePower = 400f;
     [SerializeField] private float _maxSteerAngle = 60;
+
+    private float _currentMoney;
     private void Start()
     {
         float targetAmont = _vehicleSettings.SteerAngle / _maxSteerAngle;
         evolveUI.UpdateUI(currentItem, targetAmont, targetAmont);
-
     }
 
     public void Evolve()
     {
-        switch (currentItem)
+        if (MoneyManager.Instance.GetMoney() > 10)
         {
-            case MAX_SPEED:
-                MaxSpeed();
-                break;
-            case ACCELERTE_POWER:
-                AcceleratePower();
-                break;
-            case STEER_HANDELER:
-                SteerHandeler();
-                break;
-            case FUEL:
-                Fuel();
+            switch (currentItem)
+            {
+                case MAX_SPEED:
+                    MaxSpeed();
                     break;
+                case ACCELERTE_POWER:
+                    AcceleratePower();
+                    break;
+                case STEER_HANDELER:
+                    SteerHandeler();
+                    break;
+                case FUEL:
+                    Fuel();
+                    break;
+            }
+            MoneyManager.Instance.AddMoney(-10);
         }
-        MoneyManager.Instance.AddMoney(-10);
     }
     private void Fuel()
     {

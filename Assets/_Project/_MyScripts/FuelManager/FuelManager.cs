@@ -8,6 +8,7 @@ public class FuelManager : MonoBehaviour
     [SerializeField] private float _fuel = 100f;
     [SerializeField] private Image _fuelImage;
     [SerializeField] private Vehicle _vehicle;
+    [SerializeField] private GameObject _losePanel;
     void Start()
     {
         _fuel = _vehicleSettingsSO.Fuel;
@@ -20,6 +21,12 @@ public class FuelManager : MonoBehaviour
         {
             _fuel -= Time.deltaTime;
             _fuelImage.fillAmount = _fuel / _vehicleSettingsSO.Fuel;
+        }
+        if (_fuel <= 0)
+        {
+            enabled = false;
+            _losePanel.SetActive(true);
+
         }
 
     }

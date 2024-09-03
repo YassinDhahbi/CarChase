@@ -21,7 +21,7 @@ public class SceneLoader : MonoBehaviour
     {
         _animator.Play("SceneLoader_Anim");
         AudioManager.Instance.PlaySound(_carEngineStartSfx);
-        float skillComboCounting = _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        float skillComboCounting = 2f;
         yield return new WaitForSeconds(skillComboCounting);
         Debug.Log("Load");
         SceneManager.LoadScene(sceneName);

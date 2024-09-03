@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using ArcadeVehicleController;
 using DG.Tweening;
@@ -23,6 +24,8 @@ public class PhoneSystem : MonoBehaviour
     [Header("Stop Sign Parameters")]
     [SerializeField] private Transform _stopSign;
     [SerializeField] private float _stopSignAnimationDuration;
+    [Header("Win")]
+    [SerializeField] private GameObject _winPanel;
 
 
 
@@ -100,10 +103,39 @@ public class PhoneSystem : MonoBehaviour
         DeliverySystem.Instance.SetArrowState(true);
 
     }
+
     public void RemoveClientRequestUI(int index)
     {
         Destroy(_listOfClientsRequests[index].gameObject);
-        // _listOfClientsRequests.RemoveAt(index);
+        StartCoroutine(DelayedWin());
     }
 
+    [ContextMenu("Test Win")]
+    private void TestWinCondition()
+    {
+        var childCount = _requestSpawnParent.childCount;
+        Debug.Log("ChildCOunt = " + childCount);
+        if (childCount == 0)
+        {
+            _winPanel.SetActive(true);
+            LevelData.LevelIndex++;
+        }
+
+
+        Debug.Log("Level Index = " + LevelData.LevelIndex);
+
+    }
+
+    IEnumerator DelayedWin()
+    {
+        yield return new WaitForSeconds(1f);
+        TestWinCondition();
+    }
+
+}
+
+public static class LevelData
+{
+    public static int LevelIndex;
+    public static bool LogoLoaded = true;
 }

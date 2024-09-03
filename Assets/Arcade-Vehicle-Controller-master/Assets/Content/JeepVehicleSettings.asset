@@ -22,12 +22,12 @@ MonoBehaviour:
   m_SpringRestLength: 0.8
   m_SpringStrength: 1200
   m_SpringDamper: 75
-  m_AcceleratePower: 300
+  m_AcceleratePower: 400
   m_BrakesPower: 1.5
-  m_MaxSpeed: 17
+  m_MaxSpeed: 42
   m_MaxReverseSpeed: 7
-  m_SteerAngle: 20
+  m_SteerAngle: 60
   m_FrontWheelsGripFactor: 0.8
   m_RearWheelsGripFactor: 0.9
   m_AirResistance: 5
-  m_Fuel: 500
+  m_Fuel: 150

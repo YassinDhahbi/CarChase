@@ -40,6 +40,7 @@ public class DeliverySystem : MonoBehaviour
     }
     void Start()
     {
+
         GeneratePathsList();
     }
 
@@ -78,7 +79,9 @@ public class DeliverySystem : MonoBehaviour
     }
     void GenerateNPCs()
     {
-        for (int i = 0; i < _listOfSpawnlableNPCs.Count; i++)
+        Debug.Log("Level Index: " + LevelData.LevelIndex);
+        LevelData.LevelIndex = Mathf.Clamp(LevelData.LevelIndex, 0, _listOfSpawnlableNPCs.Count - 1);
+        for (int i = 0; i < LevelData.LevelIndex + 1; i++)
         {
             var npcData = _listOfSpawnlableNPCs[i];
             var path = _listOfPathCombinations[i];

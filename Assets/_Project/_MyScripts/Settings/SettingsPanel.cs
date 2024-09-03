@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using ArcadeVehicleController;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +16,13 @@ public class SettingsPanel : MonoBehaviour
 
     [SerializeField] private SceneLoader _sceneLoader;
 
+    [Header("Reset Player")]
+    Vector3 _resetPosition;
+
+    private void Start()
+    {
+        _resetPosition = PlayerController.Instance.Vehicle.transform.position;
+    }
     private void OnEnable()
     {
         _seetingsBtn.onClick.AddListener(OpenSettings);
@@ -57,5 +66,23 @@ public class SettingsPanel : MonoBehaviour
 
     public void Quit() => Application.Quit();
 
-    public void LoadMainMneu() => _sceneLoader.LoadScene("MainGame");
+    public void LoadMainMneu()
+    {
+        LevelData.LogoLoaded = true;
+    }
+
+    public void ResetPlayer() => StartCoroutine(DelayedReset());
+
+    IEnumerator DelayedReset()
+    {
+        PlayerController.Instance.Vehicle.enabled = false;
+        PlayerController.Instance.Vehicle.transform.position = _resetPosition;
+        PlayerController.Instance.Vehicle.transform.rotation = Quaternion.identity;
+        var rb = PlayerController.Instance.Vehicle.GetComponent<Rigidbody>();
+        rb.Sleep();
+        yield return new WaitForSeconds(0.5f);
+        PlayerController.Instance.Vehicle.enabled = true;
+        rb.WakeUp();
+
+    }
 }

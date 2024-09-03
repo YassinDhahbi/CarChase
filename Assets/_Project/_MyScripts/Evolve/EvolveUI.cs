@@ -14,7 +14,6 @@ public class EvolveUI : MonoBehaviour
     public void UpdateUI(string evolveName,float startFillAmount, float targetAmont)
     {
         _item.text = evolveName;
-
         StartCoroutine(UpdateFillUI(_image, startFillAmount, targetAmont));
     }
 

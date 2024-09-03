@@ -8,27 +8,25 @@ public class MainMenuManager : MonoBehaviour
 
     private void Awake()
     {
-        foreach (GameObject go in _gameObjects)
-        {
-            go.SetActive(false);
-        }
+        StartGame(LevelData.LogoLoaded);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartGame();
+            LevelData.LogoLoaded = false;
+            StartGame(false);
         }
     }
 
-    private void StartGame()
+    private void StartGame(bool isStart)
     {
         foreach (GameObject go in _gameObjects)
         {
-            go.SetActive(true);
+            go.SetActive(!isStart);
         }
-        _vmCam.SetActive(false);
-        _startGameTxt.SetActive(false);
+        _vmCam.SetActive(isStart);
+        _startGameTxt.SetActive(isStart);
     }
 }

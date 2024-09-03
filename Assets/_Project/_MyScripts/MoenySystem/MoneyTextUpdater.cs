@@ -8,5 +8,6 @@ public class MoneyTextUpdater : MonoBehaviour
     {
         _tmp = GetComponent<TextMeshProUGUI>();
         MoneyManager.Instance.SetTMP(_tmp);
+        MoneyManager.Instance.AddMoney(0);
     }
 }

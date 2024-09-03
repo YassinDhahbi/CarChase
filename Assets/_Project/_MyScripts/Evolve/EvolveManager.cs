@@ -32,7 +32,7 @@ public class EvolveManager : MonoBehaviour
 
     public void Evolve()
     {
-        if (MoneyManager.Instance.GetMoney() > 10)
+        if (MoneyManager.Instance.GetMoney() >20)
         {
             switch (currentItem)
             {
@@ -49,7 +49,7 @@ public class EvolveManager : MonoBehaviour
                     Fuel();
                     break;
             }
-            MoneyManager.Instance.AddMoney(-10);
+            MoneyManager.Instance.AddMoney(-20);
         }
     }
     private void Fuel()
@@ -87,10 +87,10 @@ public class EvolveManager : MonoBehaviour
 
     public void SteerHandeler()
     {
-        if (_vehicleSettings.SteerAngle < _maxSteerAngle)
+        if (_vehicleSettings.SteerAngle > 20)
         {
             float startFillAmount = _vehicleSettings.SteerAngle / _maxSteerAngle;
-            _vehicleSettings.SetSteerHandeling(10f);
+            _vehicleSettings.SetSteerHandeling(-10f);
             float targetAmont = _vehicleSettings.SteerAngle / _maxSteerAngle;
             evolveUI.UpdateUI("SteerHandeler", startFillAmount, targetAmont);
         }
